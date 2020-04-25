@@ -66,7 +66,8 @@ fn main() -> GameResult {
         .add_resource_path(resource_dir)
         .window_setup(ggez::conf::WindowSetup::default().title("Demo Game"))
         .window_mode(ggez::conf::WindowMode::default().dimensions(1280.0, 720.0))
-        .build()?;
+        .build()
+        .expect("Expected the game to build!");
 
     let state = &mut GameState::new(ctx)?;
 
