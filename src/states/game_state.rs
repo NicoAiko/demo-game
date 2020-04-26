@@ -38,7 +38,7 @@ impl event::EventHandler for GameState {
     }
 
     fn draw(&mut self, ctx: &mut Context) -> GameResult {
-        graphics::clear(ctx, [0.1, 0.2, 0.3, 1.0].into());
+        graphics::clear(ctx, graphics::BLACK);
 
         self.fps_state.draw(ctx).expect("FPS Draw failed");
 
@@ -56,7 +56,7 @@ impl event::EventHandler for GameState {
             self.characters_left -= 1;
         }
 
-        text.set_bounds(cgmath::Point2::new(width - 40.0, f32::INFINITY), Align::Center);
+        text.set_bounds(cgmath::Point2::new(width - 40.0, f32::INFINITY), Align::Left);
 
         graphics::draw(ctx, &text, (dest_point,))?;
 
