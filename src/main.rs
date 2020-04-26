@@ -1,57 +1,12 @@
-use cgmath;
 use ggez;
-use ggez::graphics;
-use ggez::graphics::{Font};
-use ggez::{event, Context, GameResult};
+use ggez::{event, GameResult};
 use std::env;
 use std::path;
 
-struct GameState {
-    font: Font,
-    font_size: f32,
-    frames: usize,
-    characters_left: usize,
-    text_length: usize,
-    original_text: String,
-}
-impl GameState {
-    pub fn new(ctx: &mut Context) -> GameResult<GameState> {
-        let font = graphics::Font::new(ctx, "/micross.ttf")?;
-        let original_text = "Mach dir darüber keine Sorgen, das kriegen wir geregelt!\nHast du schon die Polizei gerufen?".to_string();
-        let text_length = original_text.len();
+mod systems;
+mod states;
 
-        Ok(GameState { font, font_size: 48.0, frames: 0, text_length, characters_left: text_length, original_text })
-    }
-}
-
-impl event::EventHandler for GameState {
-    fn update(&mut self, _ctx: &mut Context) -> GameResult {
-        Ok(())
-    }
-
-    fn draw(&mut self, ctx: &mut Context) -> GameResult {
-        graphics::clear(ctx, [0.1, 0.2, 0.3, 1.0].into());
-
-        let text: graphics::Text;
-        let offset = self.frames as f32 / 10.0;
-        let dest_point = cgmath::Point2::new(offset, offset);
-        if self.characters_left == 0 as usize {
-            let text_content = self.original_text.clone();
-            text = graphics::Text::new((text_content, self.font, self.font_size));
-        } else {
-            let text_len = self.text_length - (self.characters_left - 1);
-            let text_content: String = self.original_text.chars().take(text_len).collect();
-            text = graphics::Text::new((text_content, self.font, self.font_size));
-
-            self.characters_left -= 1;
-        }
-
-        graphics::draw(ctx, &text, (dest_point,))?;
-
-        graphics::present(ctx)?;
-        Ok(())
-    }
-}
+use states::game_state::GameState;
 
 fn main() -> GameResult {
     let resource_dir = if let Ok(manifest_dir) = env::var("CARGO_MANIFEST_DIR") {
