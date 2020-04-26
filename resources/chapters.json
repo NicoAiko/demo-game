@@ -1,0 +1,17 @@
+[{
+  "chapter": "Der erste Streich",
+  "data": {
+    "characters": [{
+      "id": "c_1",
+      "name": "Steve",
+      "profile": {
+        "full_name": "Steve O'Brien",
+        "age": 26,
+        "description": "Ein scharfsinniger Kommissar mit guter Beobachtungsgabe."
+      }
+    }],
+    "dialogue": [{
+      "id": 1
+    }]
+  }
+}]
