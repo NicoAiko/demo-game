@@ -25,6 +25,7 @@ fn main() -> GameResult {
         .expect("Expected the game to build!");
 
     let state = &mut GameState::new(ctx)?;
+    state.load_sequence(ctx);
 
     event::run(ctx, events_loop, state)
 }
