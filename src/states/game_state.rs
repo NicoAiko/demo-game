@@ -17,10 +17,12 @@ use std::f32;
 
 use crate::systems::FPSState;
 use crate::systems::Background;
+use crate::systems::DialogBox;
 
 pub struct GameState {
     fps_state: FPSState,
     background: Background,
+    dialog_box: DialogBox,
     font: Font,
     font_size: f32,
     characters_left: usize,
@@ -34,8 +36,10 @@ impl GameState {
         let text_length = original_text.len();
         let fps_state = FPSState::new(font, 24.0).expect("Couldn't create FPS State Manager");
         let background = Background::new()?;
+        let mut dialog_box = DialogBox::new(ctx, 0.0, 36.0)?;
+        dialog_box.set_actor("Steve");
 
-        Ok(GameState { fps_state, background, font, font_size: 24.0, text_length, characters_left: text_length, original_text })
+        Ok(GameState { dialog_box, fps_state, background, font, font_size: 24.0, text_length, characters_left: text_length, original_text })
     }
 
     // For testing purposes
@@ -55,25 +59,26 @@ impl event::EventHandler for GameState {
         graphics::clear(ctx, graphics::BLACK);
 
         self.background.draw(ctx).expect("Background Draw failed");
+        self.dialog_box.draw(ctx).expect("Dialog box Draw failed");
         self.fps_state.draw(ctx).expect("FPS Draw failed");
 
-        let mut text: graphics::Text;
-        let (width, height) = graphics::drawable_size(ctx);
-        let dest_point = cgmath::Point2::new(20.0, height - 80.0);
-        if self.characters_left == 0 as usize {
-            let text_content = self.original_text.clone();
-            text = graphics::Text::new((text_content, self.font, self.font_size));
-        } else {
-            let text_len = self.text_length - (self.characters_left - 1);
-            let text_content: String = self.original_text.chars().take(text_len).collect();
-            text = graphics::Text::new((text_content, self.font, self.font_size));
-
-            self.characters_left -= 1;
-        }
-
-        text.set_bounds(cgmath::Point2::new(width - 40.0, f32::INFINITY), Align::Left);
-
-        graphics::draw(ctx, &text, (dest_point,))?;
+        // let mut text: graphics::Text;
+        // let (width, height) = graphics::drawable_size(ctx);
+        // let dest_point = cgmath::Point2::new(20.0, height - 80.0);
+        // if self.characters_left == 0 as usize {
+        //     let text_content = self.original_text.clone();
+        //     text = graphics::Text::new((text_content, self.font, self.font_size));
+        // } else {
+        //     let text_len = self.text_length - (self.characters_left - 1);
+        //     let text_content: String = self.original_text.chars().take(text_len).collect();
+        //     text = graphics::Text::new((text_content, self.font, self.font_size));
+        //
+        //     self.characters_left -= 1;
+        // }
+        //
+        // text.set_bounds(cgmath::Point2::new(width - 40.0, f32::INFINITY), Align::Left);
+        //
+        // graphics::draw(ctx, &text, (dest_point,))?;
 
         graphics::present(ctx)?;
         Ok(())
