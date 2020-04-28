@@ -1,0 +1,42 @@
+**Looking For More Team Members**
+
+__**2D Artist(s)**__
+    - Background art
+    - Character art + animation
+    - Title art
+
+__**Music Composer(s)**__
+    - Creation of Sound Effects
+    - Creation of individual music pieces
+
+
+**About us**
+This project is, like already printed in bold above, a hobby project which targets no specific goal as far as actually releasing is concerned.
+Hello there! Currently, the team is basically two people who work on this **hobby project** in the mean time after our day-time job.
+Of course, if the game turns out to be in a state that the team can proudly show it to the world, I most likely would be the first to say so!
+
+My name is Nico, I'm the lead programmer of this project and also currently the only programmer.
+The other team member's name is Christoph, he composes music when he has time to do so.
+I started this project to get a foot into game development and to gather experience in this specific field.
+
+**Actual Revenue**
+As there is no funding except maybe my private one, the only "revenue" to share would of course be the mentions in the game's Credits and the learning experience.
+
+__**About the project**__
+So, after all these introductions, let's talk about the project itself.
+The project essentially is a Detective-themed game. You will mainly play as a Detective that basically is a "freshman" in the Police's homicide squad.
+For the current project, we only plan for one murder case at this point, but if this project can blossom well enough, an actual sequel with more cases could be planned as well.
+
+As a **2D Artist**, your task would be to create appropriate backgrounds to the scenes that are used in the game, create character arts as well as providing character animation.
+The character animation doesn't have to be complex. Maybe you want to take a look into a title named "Ace Attorney Investigations: Miles Edgeworth". The animation should be simplistic and easy to implement.
+
+As a **Music Composer** your task would be to create music pieces for characters the player encounters, certain key scenes that require the extra emotional tune as well as a title screen and credits tune and sound effects.
+Each of these tunes can also be simplistic and don't require any orchestral-sized pieces. The composer should be able to convey the emotions asked in the key scenes through the music though, so this might be a learning experience.
+
+**After the project**
+If the project happens to be a success and there is an actual chance to release it, there might be a chance to do a follow-up project.
+This can be a sequel to the game or an entirely new one that has no connection to the prior project whatsoever.
+These are all big **ifs** at this point.
+
+**Finally**,
+if you're interested or you've any questions, please send me a DM on Discord.
