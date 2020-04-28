@@ -15,22 +15,18 @@ type Vector2 = cgmath::Vector2<f32>;
 #[derive(Debug, PartialEq)]
 struct ImageStoreItem {
     image: Image,
-    // TODO: identifier can actually be removed
-    identifier: String,
 }
 
 impl ImageStoreItem {
-    fn new(ctx: &mut Context, identifier: &str, path: &str) -> ImageStoreItem {
-        if path.is_empty() || identifier.is_empty() {
+    fn new(ctx: &mut Context, path: &str) -> ImageStoreItem {
+        if path.is_empty() {
             panic!("Expected an identifier and image path!");
         }
 
         let image = Image::new(ctx, path).expect("Image couldn't be loaded!");
-        let id = identifier.to_string();
 
         ImageStoreItem {
             image,
-            identifier: id,
         }
     }
 }
@@ -55,7 +51,7 @@ impl Background {
             return;
         }
 
-        let item = ImageStoreItem::new(ctx, identifier, path);
+        let item = ImageStoreItem::new(ctx, path);
 
         self.image_store.insert(identifier.to_string(), item);
     }
