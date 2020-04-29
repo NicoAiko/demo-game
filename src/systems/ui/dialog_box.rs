@@ -110,6 +110,11 @@ impl DialogBox {
     }
 
     pub fn draw(&mut self, ctx: &mut Context) -> GameResult {
+        // No need to draw anything, if it's all empty
+    	if self.actor.is_empty() && self.dialog.is_empty() {
+            Ok(())
+        }
+
         let (width, height) = graphics::drawable_size(ctx);
         let scale: Vector2<f32> = Vector2::<f32>::new(
             width / WIDTH,
@@ -120,13 +125,15 @@ impl DialogBox {
 
         // First draw the dialog box
         graphics::draw(ctx, &self.dialog_box_mesh, draw_params)?;
-        graphics::draw(ctx, &self.actor_box_mesh, draw_params)?;
 
         if !self.actor.is_empty() {
             let mut text = Text::new((self.actor.clone(), self.font, self.actor_text_font_size));
             let text_position = nalgebra::Point2::new(width * LEFT_MULTIPLIER, height * (TOP_MULTIPLIER - 0.025));
 
             text.set_bounds(nalgebra::Point2::new((width * RIGHT_MULTIPLIER - width * LEFT_MULTIPLIER), f32::INFINITY), Align::Center);
+
+            // Draw Actor box and Actor text
+            graphics::draw(ctx, &self.actor_box_mesh, draw_params)?;
             graphics::draw(ctx, &text, DrawParam::default().color(graphics::BLACK).dest(text_position))?;
         }
 
