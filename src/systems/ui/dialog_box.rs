@@ -143,4 +143,12 @@ impl DialogBox {
     pub fn set_actor(&mut self, actor: &str) {
         self.actor = actor.to_string();
     }
+
+    pub fn set_dialog_text(&mut self, dialog_text: &str) { self.dialog_text = dialog_text.to_string(); }
+
+    pub fn set_font(&mut self, font: Font) { self.font = font; }
+
+    pub fn set_dialog_font_size(&mut self, font_size: f32) { self.dialog_text_font_size = font_size; }
+
+    pub fn set_actor_font_size(&mut self, font_size: f32) { self.actor_text_font_size = font_size; }
 }
